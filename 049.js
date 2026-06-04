@@ -2,8 +2,8 @@ import util from "./util"
 console.time("Problem 49")
 
 let sol = [0, 0, 0]
-for(let i = 1111; i < 9999; i++){
-  if(isValidAP(getPermutations(i))) {
+for (let i = 1111; i < 9999; i++) {
+  if (isValidAP(getPermutations(i))) {
     console.log(sol.join(""))
     break
   }
@@ -12,31 +12,31 @@ console.timeEnd("Problem 49")
 
 
 
-function getPermutations(n){
+function getPermutations(n) {
   let res = []
-  for(let i = 0; i < 24; i++){
+  for (let i = 0; i < 24; i++) {
     res.push(util.nthPermutation(n.toString(), i))
   }
   return res.map(x => Number(x)).sort()
 }
 
 
-function isValidAP(nums){
+function isValidAP(nums) {
   nums = nums.filter(util.isPrime)
 
-  if(nums.length < 3) return false
+  if (nums.length < 3) return false
   const aps = generateAPs(nums)
-  aps.forEach(x =>{
-    if(isAP(x)) sol = x
+  aps.forEach(x => {
+    if (isAP(x)) sol = x
   })
   return aps.some(isAP)
 }
 
-function generateAPs(nums){
+function generateAPs(nums) {
   let aps = []
-  for(let i = 0; i < nums.length; i++){
-    for(let j = i + 1; j < nums.length; j++){
-      for(let k = j + 1; k < nums.length; k++){
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      for (let k = j + 1; k < nums.length; k++) {
         aps.push([nums[i], nums[j], nums[k]])
       }
     }
@@ -44,8 +44,8 @@ function generateAPs(nums){
   return aps
 }
 
-function isAP(ap){
-  if(
+function isAP(ap) {
+  if (
     (ap[0] - ap[1]) === (ap[1] - ap[2]) &&
     ap[0] < ap[1] &&
     ap[1] < ap[2] &&
@@ -73,4 +73,3 @@ function isAP(ap){
 // }
 
 isValidAP(getPermutations(1487))
-

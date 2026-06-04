@@ -6,12 +6,12 @@ let max = 0
 let prod = 1
 const numDigits = 13
 
-for(let i = 0; i < num.length; i++){
-  for(let j = 0; j < numDigits; j++){
-    prod *= Number(num[i+j])
+for (let i = 0; i < num.length; i++) {
+  for (let j = 0; j < numDigits; j++) {
+    prod *= Number(num[i + j])
   }
 
-  if(prod > max) max = prod
+  if (prod > max) max = prod
   prod = 1
 }
 

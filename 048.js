@@ -1,7 +1,7 @@
 console.time("Problem 48")
 
 let total = 0n
-for(let i = 1n; i <= 1000n; i++){
+for (let i = 1n; i <= 1000n; i++) {
   total += i ** i
 }
 

@@ -1,4 +1,3 @@
-
 console.time("Problem 42")
 
 let map = new Map()
@@ -18,9 +17,9 @@ words.forEach(x => {
 
 let triangles = []
 let i = 1
-while(true){
-  let tri = 0.5 * i * (i+1)
-  if(tri > 364) break
+while (true) {
+  let tri = 0.5 * i * (i + 1)
+  if (tri > 364) break
   triangles.push(tri)
   i++
 }
@@ -28,12 +27,12 @@ while(true){
 
 let count = 0
 let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("")
-words.forEach(x =>{
+words.forEach(x => {
   let sum = x.split("").reduce((acc, x) => {
     acc += letters.indexOf(x) + 1
     return acc
   }, 0)
-  if(triangles.includes(sum)) count++
+  if (triangles.includes(sum)) count++
 })
 
 

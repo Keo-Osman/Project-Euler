@@ -111,6 +111,29 @@ function nthPermutation(str, n) {
 
   return result;
 }
+function getPrimes(n) {
+    if (n < 2) return [];
 
+    const size = (n >> 1) + 1 // only odds
+    const sieve = new Uint8Array(size)
 
-export default {isPrime, isPrimeFermart, arrayEqual, isPandigital, nthPermutation}
+    const limit = Math.floor(Math.sqrt(n))
+
+    for (let p = 3; p <= limit; p += 2) {
+      if (!sieve[p >> 1]) {
+        // start at p*p, skip even multiples
+        for (let m = p * p; m <= n; m += p << 1) {
+          sieve[m >> 1] = 1
+        }
+      }
+    }
+
+    const result = [2]
+    for (let i = 3; i <= n; i += 2) {
+      if (!sieve[i >> 1]) result.push(i)
+    }
+
+    return result
+}
+
+export default {isPrime, isPrimeFermart, arrayEqual, isPandigital, nthPermutation, getPrimes}

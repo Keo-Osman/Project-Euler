@@ -4,9 +4,9 @@ console.time("Problem 7")
 let i = 2
 let count = 0
 
-while(true){
-  if(util.isPrime(i)) count++
-  if(count === 10001) break
+while (true) {
+  if (util.isPrime(i)) count++
+    if (count === 10001) break
   i++
 }
 
