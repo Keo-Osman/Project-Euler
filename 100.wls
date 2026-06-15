@@ -1,0 +1,1 @@
+Print @ Solve[2a^2 - 2a == b^2 - b && a > 0 && b > 0 && b > 10^12, {a, b}, Integers, MaxRoots -> 1]

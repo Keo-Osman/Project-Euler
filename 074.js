@@ -4,25 +4,31 @@ for (let i = 1; i <= 9; i++) {
   factorials[i] = i * factorials[i - 1]
 }
 
-let max = -1
-let num = -1
-for (let i = 1; i < 10; i++) {
-  let map = new Map()
-  let current = i
+let count = 0
+for (let i = 1; i < 1_000_000; i++) {
+  if (chainLength(i) === 60) count++
+}
+
+console.log(count)
+console.timeEnd("Problem 74")
+
+function chainLength (n) {
+  let length = 0
+  let current = n
   while (true) {
-    let total = 0
+    length += 1
+
     let next = current.toString().split("").map(Number).reduce((acc, x) => acc + factorials[x], 0)
-    console.log(i, current, next)
-    if (map.get(next)) {
-      num = i
-      max = Math.max(max, total)
-      break
-    } else {
-      map.set(next, 1)
-      current = next
-      total++
-    }
+    if (next === current) return length
+    
+    if (next === 169 || next === 363601 || next === 1454) {
+      length += 3
+      return length
+    } 
+    if (next === 871 || next === 872 || next === 45361 || next === 45362) {
+      length += 2
+      return length
+    } 
+    current = next
   }
 }
-console.log(num, max)
-console.timeEnd("Problem 74")
